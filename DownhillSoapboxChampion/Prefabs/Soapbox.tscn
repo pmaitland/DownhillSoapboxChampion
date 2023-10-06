@@ -7,6 +7,7 @@
 [node name="Soapbox" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+axis_lock_angular_x = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_8qb7t")
@@ -20,6 +21,3 @@ billboard = 1
 double_sided = false
 texture_filter = 0
 texture = ExtResource("1_vj2mj")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 6)

@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://crd7sh4o40onj"]
 
 [ext_resource type="PackedScene" uid="uid://brfxru1ervwnt" path="res://Prefabs/Soapbox.tscn" id="1_a7k53"]
-[ext_resource type="PackedScene" uid="uid://ccvjrsps55kp6" path="res://Prefabs/Roads/Empty.tscn" id="2_7vinf"]
+[ext_resource type="Script" path="res://Scripts/Roads.gd" id="2_g24tq"]
 
 [node name="Level" type="Node3D"]
 
 [node name="Soapbox" parent="." instance=ExtResource("1_a7k53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Roads" type="Node3D" parent="."]
-
-[node name="Empty" parent="Roads" instance=ExtResource("2_7vinf")]
+script = ExtResource("2_g24tq")
