@@ -17,7 +17,7 @@ shape = SubResource("SphereShape3D_8qb7t")
 [node name="Camera3D" type="Camera3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 6)
 
-[node name="Soapbox-0" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Soapbox" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(-0.3, 1.31134e-08, -2.27131e-08, 0, 0.259808, 0.15, 2.62268e-08, 0.15, -0.259808, 0, 0, 0)
 mesh = ExtResource("2_4at7l")
 skeleton = NodePath("../..")
