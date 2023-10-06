@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://brfxru1ervwnt"]
+
+[ext_resource type="Texture2D" uid="uid://bcvsgt182y5um" path="res://Sprites/soapbox.png" id="1_vj2mj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8qb7t"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8qb7t")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("1_vj2mj")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 6)
