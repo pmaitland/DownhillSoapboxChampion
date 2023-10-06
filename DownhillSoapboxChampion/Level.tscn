@@ -6,7 +6,7 @@
 [node name="Level" type="Node3D"]
 
 [node name="Soapbox" parent="." instance=ExtResource("1_a7k53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
 
 [node name="Roads" type="Node3D" parent="."]
 script = ExtResource("2_g24tq")
