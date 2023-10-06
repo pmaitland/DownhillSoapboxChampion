@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://brfxru1ervwnt"]
+[gd_scene load_steps=4 format=3 uid="uid://brfxru1ervwnt"]
 
-[ext_resource type="Texture2D" uid="uid://bcvsgt182y5um" path="res://Sprites/soapbox.png" id="1_vj2mj"]
+[ext_resource type="Script" path="res://Scripts/Soapbox.gd" id="1_181s5"]
+[ext_resource type="ArrayMesh" uid="uid://2f1nqs3oqp01" path="res://Models/soapbox/soapbox-0.obj" id="1_jshho"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8qb7t"]
 
@@ -8,6 +9,7 @@
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 axis_lock_angular_x = true
+script = ExtResource("1_181s5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_8qb7t")
@@ -15,9 +17,10 @@ shape = SubResource("SphereShape3D_8qb7t")
 [node name="Camera3D" type="Camera3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 6)
 
-[node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-billboard = 1
-double_sided = false
-texture_filter = 0
-texture = ExtResource("1_vj2mj")
+[node name="Soapbox-0" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(-0.3, 1.31134e-08, -2.27131e-08, 0, 0.259808, 0.15, 2.62268e-08, 0.15, -0.259808, 0, 0, 0)
+mesh = ExtResource("1_jshho")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 6)
