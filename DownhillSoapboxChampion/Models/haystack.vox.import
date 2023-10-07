@@ -2,11 +2,7 @@
 
 importer="MagicaVoxel.With.Extensions.To.Mesh"
 type="Mesh"
-<<<<<<< HEAD
-uid="uid://btsr18u8a67r8"
-=======
 uid="uid://n7eyqt512lfp"
->>>>>>> 6caa290 (hay fix plus destroyed)
 path="res://.godot/imported/haystack.vox-fea51fbbddf7d550cd35972fcd6345a0.mesh"
 
 [deps]
