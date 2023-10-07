@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://crd7sh4o40onj"]
+[gd_scene load_steps=4 format=3 uid="uid://crd7sh4o40onj"]
 
 [ext_resource type="PackedScene" uid="uid://brfxru1ervwnt" path="res://Prefabs/Soapbox.tscn" id="1_a7k53"]
 [ext_resource type="Script" path="res://Scripts/Roads.gd" id="2_g24tq"]
+[ext_resource type="MeshLibrary" uid="uid://ckmsr6nn7cho3" path="res://RoadsMeshLibrary.tres" id="3_fx1ln"]
 
 [node name="Level" type="Node3D"]
 
 [node name="Soapbox" parent="." instance=ExtResource("1_a7k53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 2)
 
 [node name="Roads" type="Node3D" parent="."]
 script = ExtResource("2_g24tq")
+
+[node name="GridMap" type="GridMap" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+mesh_library = ExtResource("3_fx1ln")
+cell_size = Vector3(3, 1, 3)
