@@ -3,7 +3,9 @@ extends Node3D
 
 enum RoadType {
 	EMPTY_CENTRE,
-	EMPTY
+	EMPTY,
+	END_R,
+	END_L
 }
 
 var haystack = load("res://Prefabs/Haystack.tscn")
@@ -16,10 +18,15 @@ func _ready():
 	gridmap = get_node("GridMap")
 	for z in range(1000):
 		for x in range(5):
-			if x == 2:
-				gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.EMPTY_CENTRE)
-			else:
-				gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.EMPTY)
+			match x:
+				0: 
+					gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.END_L)
+				2:
+					gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.EMPTY_CENTRE)
+				4:
+					gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.END_R)
+				_: 
+					gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.EMPTY)
 				
 			if x == 1 or x == 2 or x == 3:
 				if rng.randi_range(1, 10) == 1:
