@@ -8,17 +8,17 @@
 [node name="Soapbox" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-axis_lock_angular_x = true
 script = ExtResource("1_181s5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.457508, -0.0713143)
 shape = SubResource("SphereShape3D_8qb7t")
 
 [node name="Camera3D" type="Camera3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 6)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4, 15)
 
 [node name="Soapbox" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(-0.3, 1.31134e-08, -2.27131e-08, 0, 0.259808, 0.15, 2.62268e-08, 0.15, -0.259808, 0, 0, 0)
+transform = Transform3D(-1, 7.54978e-08, -1.30766e-07, 0, 0.866026, 0.499999, 1.50996e-07, 0.499999, -0.866026, 0, 0, 0)
 mesh = ExtResource("2_rflk6")
 skeleton = NodePath("../..")
 

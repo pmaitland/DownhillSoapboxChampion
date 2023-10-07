@@ -3,8 +3,6 @@
 [ext_resource type="ArrayMesh" uid="uid://b1cojiyjhnyq6" path="res://Models/road.vox" id="1_bkdya"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yiq4l"]
-friction = 0.5
-rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucrxy"]
 

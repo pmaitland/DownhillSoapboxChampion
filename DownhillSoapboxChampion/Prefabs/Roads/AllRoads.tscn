@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://0u2g5aw6xi5q"]
+
+[ext_resource type="ArrayMesh" uid="uid://b1cojiyjhnyq6" path="res://Models/road.vox" id="1_iuq53"]
+[ext_resource type="ArrayMesh" uid="uid://dlsb0xpl1pa72" path="res://Models/side-road.vox" id="2_frmla"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_33j8j"]
+data = PackedVector3Array(-2, 0.3, -2, -0.1, 0.3, -2, -0.1, 0.3, 2, -0.1, 0.3, 2, -2, 0.3, 2, -2, 0.3, -2, -0.1, 0.3, -2, 0.1, 0.3, -2, 0.1, 0.3, 2, 0.1, 0.3, 2, -0.1, 0.3, 2, -0.1, 0.3, -2, 0.1, 0.3, -2, 2, 0.3, -2, 2, 0.3, 2, 2, 0.3, 2, 0.1, 0.3, 2, 0.1, 0.3, -2, -0.1, 0, 2, -0.1, 0, -2, -2, 0, -2, -2, 0, -2, -2, 0, 2, -0.1, 0, 2, 0.1, 0, 2, 0.1, 0, 1.9, -0.1, 0, 1.9, -0.1, 0, 1.9, -0.1, 0, 2, 0.1, 0, 2, 2, 0, 1.9, 2, 0, -1.9, -0.1, 0, -1.9, -0.1, 0, -1.9, -0.1, 0, 1.9, 2, 0, 1.9, 0.1, 0, -1.9, 0.1, 0, -2, -0.1, 0, -2, -0.1, 0, -2, -0.1, 0, -1.9, 0.1, 0, -1.9, 2, 0, 2, 2, 0, 1.9, 0.1, 0, 1.9, 0.1, 0, 1.9, 0.1, 0, 2, 2, 0, 2, 2, 0, -1.9, 2, 0, -2, 0.1, 0, -2, 0.1, 0, -2, 0.1, 0, -1.9, 2, 0, -1.9, -2, 0.3, -2, -2, 0.3, 2, -2, 0, 2, -2, 0, 2, -2, 0, -2, -2, 0.3, -2, 2, 0.3, -2, 2, 0, -2, 2, 0, 2, 2, 0, 2, 2, 0.3, 2, 2, 0.3, -2, -2, 0, 2, -2, 0.3, 2, -0.1, 0.3, 2, -0.1, 0.3, 2, -0.1, 0, 2, -2, 0, 2, -0.1, 0, 2, -0.1, 0.3, 2, 0.1, 0.3, 2, 0.1, 0.3, 2, 0.1, 0, 2, -0.1, 0, 2, 0.1, 0, 2, 0.1, 0.3, 2, 2, 0.3, 2, 2, 0.3, 2, 2, 0, 2, 0.1, 0, 2, -0.1, 0.3, -2, -2, 0.3, -2, -2, 0, -2, -2, 0, -2, -0.1, 0, -2, -0.1, 0.3, -2, 0.1, 0.3, -2, -0.1, 0.3, -2, -0.1, 0, -2, -0.1, 0, -2, 0.1, 0, -2, 0.1, 0.3, -2, 2, 0.3, -2, 0.1, 0.3, -2, 0.1, 0, -2, 0.1, 0, -2, 2, 0, -2, 2, 0.3, -2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pn4v2"]
+data = PackedVector3Array(-2, 0.3, -2, 2, 0.3, -2, 2, 0.3, 2, 2, 0.3, 2, -2, 0.3, 2, -2, 0.3, -2, 2, 0, 2, 2, 0, -2, -2, 0, -2, -2, 0, -2, -2, 0, 2, 2, 0, 2, -2, 0.3, -2, -2, 0.3, 2, -2, 0, 2, -2, 0, 2, -2, 0, -2, -2, 0.3, -2, 2, 0.3, -2, 2, 0, -2, 2, 0, 2, 2, 0, 2, 2, 0.3, 2, 2, 0.3, -2, -2, 0, 2, -2, 0.3, 2, 2, 0.3, 2, 2, 0.3, 2, 2, 0, 2, -2, 0, 2, 2, 0.3, -2, -2, 0.3, -2, -2, 0, -2, -2, 0, -2, 2, 0, -2, 2, 0.3, -2)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Road" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
+mesh = ExtResource("1_iuq53")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Road"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_33j8j")
+
+[node name="Side-road" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
+mesh = ExtResource("2_frmla")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Side-road"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Side-road/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pn4v2")

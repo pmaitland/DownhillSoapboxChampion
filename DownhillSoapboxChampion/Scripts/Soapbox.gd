@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-var speed = 1.5
+var speed = 5
 
 var default_y_rotation
 var y_turn_amount = 40 * PI/180
