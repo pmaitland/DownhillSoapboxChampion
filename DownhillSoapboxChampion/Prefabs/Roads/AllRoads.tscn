@@ -12,7 +12,6 @@ data = PackedVector3Array(-2, 0.3, -2, 2, 0.3, -2, 2, 0.3, 2, 2, 0.3, 2, -2, 0.3
 [node name="Node3D" type="Node3D"]
 
 [node name="Road" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
 mesh = ExtResource("1_iuq53")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Road"]
@@ -21,7 +20,6 @@ mesh = ExtResource("1_iuq53")
 shape = SubResource("ConcavePolygonShape3D_33j8j")
 
 [node name="Side-road" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
 mesh = ExtResource("2_frmla")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Side-road"]
