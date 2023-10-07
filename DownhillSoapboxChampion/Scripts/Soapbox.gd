@@ -2,13 +2,13 @@ extends CharacterBody3D
 
 var gravity: int = 5
 
-var SPEED = 5
+var SPEED = 1
+var MAX_SPEED = 20
 
 var default_y_rotation
 var y_turn_amount = 40 * PI/180
 
 var soapbox
-
 func _ready():
 	soapbox = get_node("Soapbox")
 	default_y_rotation = soapbox.rotation.y
@@ -28,8 +28,11 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("Left", "Right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
+		velocity.x = direction.x * velocity.z
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, velocity.z)
+		
+	velocity.z += SPEED * delta
+	velocity.z = min(velocity.z, MAX_SPEED)
 		
 	move_and_slide()
