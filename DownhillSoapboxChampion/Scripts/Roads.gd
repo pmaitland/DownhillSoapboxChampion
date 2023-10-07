@@ -8,7 +8,7 @@ enum RoadType {
 	END_L
 }
 
-var haystack = load("res://Prefabs/Haystack.tscn")
+@export var obstacles: Array[PackedScene]
 
 var gridmap : GridMap
 
@@ -29,11 +29,12 @@ func _ready():
 					gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.EMPTY)
 				
 			if x == 1 or x == 2 or x == 3:
+				# place random obstacle 
 				if rng.randi_range(1, 10) == 1:
-					place_obstacle(haystack, x, z)
+					place_obstacle(obstacles[randi_range(0, obstacles.size()-1)], x, z) 
 
 func place_obstacle(scene, x, z):
-	var new_scene = scene.instantiate()
+	var new_scene = scene.instantiate() 
 	var new_position = gridmap.map_to_local(Vector3(x, 0, z))
 	new_position.x += rng.randf_range(-1, 1)
 	new_position.z += rng.randf_range(-1, 1)
