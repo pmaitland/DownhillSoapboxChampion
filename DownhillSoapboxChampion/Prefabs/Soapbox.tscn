@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Soapbox.gd" id="1_yn2y2"]
 [ext_resource type="ArrayMesh" uid="uid://cbmf7s682gaky" path="res://Models/soapbox.vox" id="2_63fb8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rg5wt"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_tf8qa"]
 
 [node name="Soapbox" type="Node3D"]
 
@@ -14,7 +14,7 @@ script = ExtResource("1_yn2y2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
-shape = SubResource("BoxShape3D_rg5wt")
+shape = SubResource("SphereShape3D_tf8qa")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 10, 10)
