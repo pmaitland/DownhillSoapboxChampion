@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://0u2g5aw6xi5q"]
+[gd_scene load_steps=5 format=3 uid="uid://0u2g5aw6xi5q"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsr0pdmcrnyot" path="res://Models/road.vox" id="1_ca3c1"]
+[ext_resource type="ArrayMesh" uid="uid://b0b127wj87t48" path="res://Models/side-road.vox" id="2_767mi"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_33j8j"]
 data = PackedVector3Array(-2, 0.3, -2, -0.1, 0.3, -2, -0.1, 0.3, 2, -0.1, 0.3, 2, -2, 0.3, 2, -2, 0.3, -2, -0.1, 0.3, -2, 0.1, 0.3, -2, 0.1, 0.3, 2, 0.1, 0.3, 2, -0.1, 0.3, 2, -0.1, 0.3, -2, 0.1, 0.3, -2, 2, 0.3, -2, 2, 0.3, 2, 2, 0.3, 2, 0.1, 0.3, 2, 0.1, 0.3, -2, -0.1, 0, 2, -0.1, 0, -2, -2, 0, -2, -2, 0, -2, -2, 0, 2, -0.1, 0, 2, 0.1, 0, 2, 0.1, 0, 1.9, -0.1, 0, 1.9, -0.1, 0, 1.9, -0.1, 0, 2, 0.1, 0, 2, 2, 0, 1.9, 2, 0, -1.9, -0.1, 0, -1.9, -0.1, 0, -1.9, -0.1, 0, 1.9, 2, 0, 1.9, 0.1, 0, -1.9, 0.1, 0, -2, -0.1, 0, -2, -0.1, 0, -2, -0.1, 0, -1.9, 0.1, 0, -1.9, 2, 0, 2, 2, 0, 1.9, 0.1, 0, 1.9, 0.1, 0, 1.9, 0.1, 0, 2, 2, 0, 2, 2, 0, -1.9, 2, 0, -2, 0.1, 0, -2, 0.1, 0, -2, 0.1, 0, -1.9, 2, 0, -1.9, -2, 0.3, -2, -2, 0.3, 2, -2, 0, 2, -2, 0, 2, -2, 0, -2, -2, 0.3, -2, 2, 0.3, -2, 2, 0, -2, 2, 0, 2, 2, 0, 2, 2, 0.3, 2, 2, 0.3, -2, -2, 0, 2, -2, 0.3, 2, -0.1, 0.3, 2, -0.1, 0.3, 2, -0.1, 0, 2, -2, 0, 2, -0.1, 0, 2, -0.1, 0.3, 2, 0.1, 0.3, 2, 0.1, 0.3, 2, 0.1, 0, 2, -0.1, 0, 2, 0.1, 0, 2, 0.1, 0.3, 2, 2, 0.3, 2, 2, 0.3, 2, 2, 0, 2, 0.1, 0, 2, -0.1, 0.3, -2, -2, 0.3, -2, -2, 0, -2, -2, 0, -2, -0.1, 0, -2, -0.1, 0.3, -2, 0.1, 0.3, -2, -0.1, 0.3, -2, -0.1, 0, -2, -0.1, 0, -2, 0.1, 0, -2, 0.1, 0.3, -2, 2, 0.3, -2, 0.1, 0.3, -2, 0.1, 0, -2, 0.1, 0, -2, 2, 0, -2, 2, 0.3, -2)
@@ -9,6 +12,7 @@ data = PackedVector3Array(-2, 0.3, -2, 2, 0.3, -2, 2, 0.3, 2, 2, 0.3, 2, -2, 0.3
 [node name="Node3D" type="Node3D"]
 
 [node name="Road" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ca3c1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Road"]
 
@@ -16,6 +20,7 @@ data = PackedVector3Array(-2, 0.3, -2, 2, 0.3, -2, 2, 0.3, 2, 2, 0.3, 2, -2, 0.3
 shape = SubResource("ConcavePolygonShape3D_33j8j")
 
 [node name="Side-road" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_767mi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Side-road"]
 
