@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brfxru1ervwnt"]
 
 [ext_resource type="Script" path="res://Scripts/Soapbox.gd" id="1_181s5"]
-[ext_resource type="ArrayMesh" uid="uid://btgkle6ufjsil" path="res://Models/soapbox.vox" id="2_4at7l"]
+[ext_resource type="ArrayMesh" uid="uid://cdj7l4a8v7172" path="res://Models/soapbox.vox" id="2_rflk6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8qb7t"]
 
@@ -19,7 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Soapbox" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(-0.3, 1.31134e-08, -2.27131e-08, 0, 0.259808, 0.15, 2.62268e-08, 0.15, -0.259808, 0, 0, 0)
-mesh = ExtResource("2_4at7l")
+mesh = ExtResource("2_rflk6")
 skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="RigidBody3D"]

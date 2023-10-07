@@ -1,6 +1,7 @@
 extends Node3D
 
 var road_empty = load("res://Prefabs/Roads/Empty.tscn")
+var road_empty_centre = load("res://Prefabs/Roads/EmptyCentre.tscn")
 
 var roads : Array[Node3D] = []
 

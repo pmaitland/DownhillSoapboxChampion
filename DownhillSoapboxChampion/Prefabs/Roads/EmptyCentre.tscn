@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy663v5uuktog"]
+[gd_scene load_steps=4 format=3 uid="uid://kwldmypputoy"]
 
-[ext_resource type="ArrayMesh" uid="uid://dlsb0xpl1pa72" path="res://Models/side-road.vox" id="1_38tek"]
+[ext_resource type="ArrayMesh" uid="uid://b1cojiyjhnyq6" path="res://Models/road.vox" id="1_bkdya"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yiq4l"]
 friction = 0.5
@@ -12,7 +12,7 @@ rough = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.216506, -0.125, 0, 0.125, 0.216506, 0, -0.315664, 0.396682)
-mesh = ExtResource("1_38tek")
+mesh = ExtResource("1_bkdya")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, -0.43, -0.25)
