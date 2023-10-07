@@ -3,7 +3,8 @@
 
 # Godot-specific ignores
 .import/
-.vox.import/
+*.vox.import
+*.import
 export.cfg
 export_presets.cfg
 
