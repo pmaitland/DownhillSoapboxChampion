@@ -13,6 +13,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 5)
 script = ExtResource("2_g24tq")
 
 [node name="GridMap" type="GridMap" parent="Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh_library = ExtResource("3_fx1ln")
 cell_size = Vector3(4, 1, 4)
