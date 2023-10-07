@@ -24,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 
 [node name="Soapbox" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.05, 0, 0)
-mesh = ExtResource("2_h7ovu")
+mesh = ExtResource("2_63fb8")
 skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="CharacterBody3D"]
