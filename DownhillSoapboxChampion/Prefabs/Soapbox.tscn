@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://brfxru1ervwnt"]
+[gd_scene load_steps=18 format=3 uid="uid://brfxru1ervwnt"]
 
 [ext_resource type="Script" path="res://Scripts/Soapbox.gd" id="1_yn2y2"]
-[ext_resource type="Texture2D" uid="uid://4jar8hhptu61" path="res://icon.svg" id="2_6xd4y"]
 [ext_resource type="ArrayMesh" uid="uid://dr3g87ipjxwb4" path="res://Models/soapbox.vox" id="2_63fb8"]
+[ext_resource type="Texture2D" uid="uid://dtvyudfuh7p6h" path="res://Sprites/Splash.png" id="2_mjpa7"]
+[ext_resource type="FontFile" uid="uid://ddi7ww4hgk0i1" path="res://font/Pixeboy-z8XGD.ttf" id="2_ryrj7"]
 [ext_resource type="AudioStream" uid="uid://cge6hcipjycc0" path="res://Audio/sounds/crash.mp3" id="3_2celo"]
 [ext_resource type="AudioStream" uid="uid://ci7fceyxrrk0f" path="res://Audio/sounds/ramp.mp3" id="4_ol7qi"]
 [ext_resource type="AudioStream" uid="uid://b4o0xqjwviylm" path="res://Audio/sounds/land.mp3" id="5_q17ug"]
@@ -10,6 +11,12 @@
 [ext_resource type="Script" path="res://Scripts/Grass.gd" id="7_igef3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6be6"]
+
+[sub_resource type="Gradient" id="Gradient_itkkp"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nwxmc"]
+gradient = SubResource("Gradient_itkkp")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e1vlf"]
 _surfaces = [{
@@ -63,6 +70,7 @@ offset_bottom = 27.272
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 100
 text = "GAME OVER"
 fit_content = true
@@ -83,6 +91,7 @@ offset_bottom = -7.65601
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Press [SPACE] to replay[center]"
@@ -103,6 +112,7 @@ offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 50
 text = "Final score: "
 fit_content = true
@@ -122,6 +132,7 @@ offset_top = 0.743999
 offset_right = -130.16
 offset_bottom = -0.0240059
 size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 30
 text = "Score: 0"
 fit_content = true
@@ -139,6 +150,7 @@ offset_top = -0.0240059
 offset_right = -130.16
 offset_bottom = -4.03201
 size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 30
 text = "HP: 5/5"
 fit_content = true
@@ -147,30 +159,42 @@ tab_size = 6
 
 [node name="Game Start" type="Node3D" parent="Camera3D"]
 
-[node name="TextureRect" type="TextureRect" parent="Camera3D/Game Start"]
+[node name="black" type="TextureRect" parent="Camera3D/Game Start"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6xd4y")
+texture = SubResource("GradientTexture1D_nwxmc")
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/Game Start"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1366.0
+offset_top = -1024.0
+offset_right = 1366.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mjpa7")
 
 [node name="Game Over" type="RichTextLabel" parent="Camera3D/Game Start"]
 clip_contents = false
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.078
-anchor_right = 0.5
-anchor_bottom = 0.211
-offset_left = -287.0
-offset_top = -23.544
-offset_right = 287.0
-offset_bottom = 27.272
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 172.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/normal_font_size = 100
-text = "DOWNHILL SOAPBOX CHAMPION"
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_ryrj7")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]DOWNHILL SOAPBOX
+CHAMPION[center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -189,7 +213,10 @@ offset_bottom = -7.65601
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
-theme_override_font_sizes/normal_font_size = 50
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_ryrj7")
+theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[center]Press [SPACE] to play[center]"
 fit_content = true

@@ -132,6 +132,9 @@ func _physics_process(delta):
 		velocity.z = 0
 	move_and_slide()
 	
+	if is_on_floor():
+		increase_score(velocity.z)
+	
 	var new_camera_position = camera.position
 	new_camera_position.y = min(camera_initial_y + velocity.z * 0.25, CAMERA_MAX_Y)
 	new_camera_position.z = min(camera_initial_z + velocity.z * 0.25, CAMERA_MAX_Z)
@@ -142,12 +145,12 @@ func _on_area_3d_area_entered(area):
 	match obstacle:
 		'Ramp':
 			on_ramp = true
-			increase_score(5)
+			increase_score(5000)
 			get_node("Audio/RampSound").play()
 		"Cone", "Haystack":
 			colliding = true
 			reduce_health(1)
-			reduce_score(3)
+			reduce_score(3000)
 			get_node("Audio/CrashSound").play()
 		"Cog":
 			increase_health(1)
@@ -208,8 +211,8 @@ func set_score_labels():
 func reset():
 	can_reset = false
 	position = Vector3(10, 1, 5)
-	reduce_score(99999)
-	increase_health(99999)
+	score = 0
+	health = max_health
 	is_game_over = false
 	set_children_visibility(game_over, false)
 	set_children_visibility(game_ready, true)
