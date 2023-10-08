@@ -18,7 +18,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	gridmap = get_node("GridMap")
-	for z in range(10000):
+	for z in range(1000):
 		for x in range(5):
 			match x:
 				0: 
@@ -31,7 +31,7 @@ func _ready():
 					gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.EMPTY)
 				
 			if z > 5:
-				var obstacle_chance = rng.randi_range(1, 10)
+				var obstacle_chance = rng.randi_range(1, 5)
 				var ramp_chance = rng.randi_range(1, 30)
 				var pickup_chance = rng.randi_range(1, 20)
 				if x == 1 or x == 2 or x == 3:

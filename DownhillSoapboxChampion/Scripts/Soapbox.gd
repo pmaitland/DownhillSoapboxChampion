@@ -24,6 +24,8 @@ var game_over: Node3D
 var score_label: RichTextLabel
 var final_score_label: RichTextLabel
 var health_label: RichTextLabel
+var in_air = false
+
 var camera_initial_y
 var camera_initial_z
 var CAMERA_MAX_Y = 12
@@ -81,7 +83,11 @@ func _physics_process(delta):
 			colliding = false
 			colliding_duration = 0
 			soapbox.rotation.y = default_y_rotation
+			get_parent().get_node("CharacterBody3D/Audio/LandSound").play()
 	elif is_on_floor() and not on_ramp:
+		if in_air:
+			get_parent().get_node("CharacterBody3D/Audio/LandSound").play()
+			in_air = false
 		if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 			soapbox.rotation.y = default_y_rotation
 		elif Input.is_action_pressed("Left"):
@@ -117,12 +123,15 @@ func _on_area_3d_area_entered(area):
 	match obstacle:
 		'Ramp':
 			on_ramp = true
+      get_parent().get_node("CharacterBody3D/Audio/RampSound").play()
 		"Cone", "Haystack":
 			colliding = true
 			reduce_health(1)
 			reduce_score(3)
+      get_parent().get_node("CharacterBody3D/Audio/CrashSound").play()
 		"Cog":
 			increase_health(1)
+      get_parent().get_node("CharacterBody3D/Audio/HealthSound").play()
 			
 func _on_area_3d_area_exited(area):
 	var obstacle = area.get_parent().name
@@ -131,6 +140,7 @@ func _on_area_3d_area_exited(area):
 			on_ramp = false
 			velocity.z += 2.5
 			increase_score(5)
+      in_air = true
 	
 
 # HEALTH

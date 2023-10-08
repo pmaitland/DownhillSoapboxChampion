@@ -1,11 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://brfxru1ervwnt"]
+[gd_scene load_steps=12 format=3 uid="uid://brfxru1ervwnt"]
 
 [ext_resource type="Script" path="res://Scripts/Soapbox.gd" id="1_yn2y2"]
-[ext_resource type="ArrayMesh" uid="uid://cbmf7s682gaky" path="res://Models/soapbox.vox" id="2_63fb8"]
+[ext_resource type="ArrayMesh" uid="uid://dr3g87ipjxwb4" path="res://Models/soapbox.vox" id="2_63fb8"]
+[ext_resource type="AudioStream" uid="uid://cge6hcipjycc0" path="res://Audio/sounds/crash.mp3" id="3_2celo"]
+[ext_resource type="AudioStream" uid="uid://ci7fceyxrrk0f" path="res://Audio/sounds/ramp.mp3" id="4_ol7qi"]
+[ext_resource type="AudioStream" uid="uid://b4o0xqjwviylm" path="res://Audio/sounds/land.mp3" id="5_q17ug"]
+[ext_resource type="AudioStream" uid="uid://cihsnc22ug5lo" path="res://Audio/sounds/health.mp3" id="6_jj3br"]
+[ext_resource type="Script" path="res://Scripts/Grass.gd" id="7_igef3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6be6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mfrip"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bds2n"]
+albedo_color = Color(0.141176, 0.556863, 0.254902, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pbecl"]
+material = SubResource("StandardMaterial3D_bds2n")
 
 [node name="Soapbox" type="Node3D"]
 
@@ -133,6 +144,25 @@ shadow_enabled = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 shape = SubResource("SphereShape3D_mfrip")
+
+[node name="Audio" type="Node3D" parent="CharacterBody3D"]
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="CharacterBody3D/Audio"]
+stream = ExtResource("3_2celo")
+
+[node name="RampSound" type="AudioStreamPlayer" parent="CharacterBody3D/Audio"]
+stream = ExtResource("4_ol7qi")
+
+[node name="LandSound" type="AudioStreamPlayer" parent="CharacterBody3D/Audio"]
+stream = ExtResource("5_q17ug")
+
+[node name="HealthSound" type="AudioStreamPlayer" parent="CharacterBody3D/Audio"]
+stream = ExtResource("6_jj3br")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pbecl")
+script = ExtResource("7_igef3")
 
 [connection signal="area_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_area_exited"]
