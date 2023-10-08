@@ -123,15 +123,15 @@ func _on_area_3d_area_entered(area):
 	match obstacle:
 		'Ramp':
 			on_ramp = true
-      get_parent().get_node("CharacterBody3D/Audio/RampSound").play()
+			get_parent().get_node("CharacterBody3D/Audio/RampSound").play()
 		"Cone", "Haystack":
 			colliding = true
 			reduce_health(1)
 			reduce_score(3)
-      get_parent().get_node("CharacterBody3D/Audio/CrashSound").play()
+			get_parent().get_node("CharacterBody3D/Audio/CrashSound").play()
 		"Cog":
 			increase_health(1)
-      get_parent().get_node("CharacterBody3D/Audio/HealthSound").play()
+			get_parent().get_node("CharacterBody3D/Audio/HealthSound").play()
 			
 func _on_area_3d_area_exited(area):
 	var obstacle = area.get_parent().name
@@ -140,7 +140,7 @@ func _on_area_3d_area_exited(area):
 			on_ramp = false
 			velocity.z += 2.5
 			increase_score(5)
-      in_air = true
+			in_air = true
 	
 
 # HEALTH

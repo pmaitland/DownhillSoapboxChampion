@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://brfxru1ervwnt"]
 
 [ext_resource type="Script" path="res://Scripts/Soapbox.gd" id="1_yn2y2"]
-[ext_resource type="ArrayMesh" uid="uid://dr3g87ipjxwb4" path="res://Models/soapbox.vox" id="2_63fb8"]
-[ext_resource type="AudioStream" uid="uid://cge6hcipjycc0" path="res://Audio/sounds/crash.mp3" id="3_2celo"]
-[ext_resource type="AudioStream" uid="uid://ci7fceyxrrk0f" path="res://Audio/sounds/ramp.mp3" id="4_ol7qi"]
-[ext_resource type="AudioStream" uid="uid://b4o0xqjwviylm" path="res://Audio/sounds/land.mp3" id="5_q17ug"]
-[ext_resource type="AudioStream" uid="uid://cihsnc22ug5lo" path="res://Audio/sounds/health.mp3" id="6_jj3br"]
+[ext_resource type="ArrayMesh" uid="uid://cbmf7s682gaky" path="res://Models/soapbox.vox" id="2_63fb8"]
+[ext_resource type="AudioStream" uid="uid://1optknoeh5f5" path="res://Audio/sounds/crash.mp3" id="3_2celo"]
+[ext_resource type="AudioStream" uid="uid://dmhlg75jkkkyu" path="res://Audio/sounds/ramp.mp3" id="4_ol7qi"]
+[ext_resource type="AudioStream" uid="uid://d1vctcyyjvjee" path="res://Audio/sounds/land.mp3" id="5_q17ug"]
+[ext_resource type="AudioStream" uid="uid://hqc7p62hlne3" path="res://Audio/sounds/health.mp3" id="6_jj3br"]
 [ext_resource type="Script" path="res://Scripts/Grass.gd" id="7_igef3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6be6"]
