@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://brmevsa65skam"]
 
-[ext_resource type="ArrayMesh" uid="uid://dw73n8tncv6vm" path="res://Models/cog.vox" id="1_3688g"]
+[ext_resource type="ArrayMesh" uid="uid://b8ppon83lt845" path="res://Models/cog.vox" id="1_3688g"]
 [ext_resource type="Script" path="res://Pickup.gd" id="2_33t3c"]
 [ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="3_y24hd"]
 
