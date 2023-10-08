@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Roads.gd" id="2_g24tq"]
 [ext_resource type="MeshLibrary" uid="uid://ck1h7yd40p7s7" path="res://RoadsMeshLibrary.tres" id="3_fx1ln"]
 [ext_resource type="PackedScene" uid="uid://btegmv0qttjqj" path="res://Prefabs/Haystack.tscn" id="3_sq38d"]
-[ext_resource type="PackedScene" uid="uid://brnilnxovduty" path="res://Prefabs/Cone.tscn" id="4_40l3y"]
+[ext_resource type="PackedScene" uid="uid://1iwddgn5pr6e" path="res://Prefabs/Cone.tscn" id="4_40l3y"]
 
 [node name="Level" type="Node3D"]
 

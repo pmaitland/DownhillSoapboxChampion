@@ -16,16 +16,49 @@ var colliding_limit = 10
 var on_ramp = false;
 var on_ramp_rotation = 30 * PI/180
 
-var soapbox
-var camera
+var soapbox: Node3D
+var camera: Node3D
+var game_ready: Node3D
+var game_over: Node3D
+
+var score_label: RichTextLabel
+var final_score_label: RichTextLabel
+var health_label: RichTextLabel
 var camera_initial_y
 var camera_initial_z
 var CAMERA_MAX_Y = 12
 var CAMERA_MAX_Z = 12
 
+@export var max_health:int = 5
+var health = max_health
+var is_game_over = false
+
+var score = 0
+
+func set_children_visibility(node_w_kids: Node3D, visible: bool):
+	for kid in node_w_kids.get_children():
+		kid.visible=visible
+
+func initialise_labels():
+	game_ready = camera.get_node("Game Ready")
+	game_over = camera.get_node("Game Over")
+	
+	score_label = game_ready.get_node("Score")
+	final_score_label =game_over.get_node("Final_Score")
+	health_label = game_ready.get_node("Health")
+	set_score_labels()
+	set_health_label()
+	
+	set_children_visibility(game_over, false)
+	set_children_visibility(game_ready, true)
+	
+	
 func _ready():
 	soapbox = get_node("Soapbox")
 	camera = get_node("Camera3D")
+	
+	initialise_labels()
+	
 	camera_initial_y = camera.position.y
 	camera_initial_z = camera.position.z
 	default_y_rotation = soapbox.rotation.y
@@ -67,9 +100,11 @@ func _physics_process(delta):
 		
 	velocity.y -= gravity * delta
 		
-	velocity.z += SPEED * delta
-	velocity.z = min(velocity.z, MAX_SPEED)
-		
+	if not is_game_over:
+		velocity.z += SPEED * delta
+		velocity.z = min(velocity.z, MAX_SPEED)
+	else: 
+		velocity.z = 0
 	move_and_slide()
 	
 	var new_camera_position = camera.position
@@ -78,12 +113,63 @@ func _physics_process(delta):
 	camera.position = new_camera_position.lerp(new_camera_position, delta)
 
 func _on_area_3d_area_entered(area):
-	if area.get_parent().name == 'Ramp':
-		on_ramp = true
-	else:
-		colliding = true
-
+	var obstacle = area.get_parent().name
+	match obstacle:
+		'Ramp':
+			on_ramp = true
+		"Cone", "Haystack":
+			colliding = true
+			reduce_health(1)
+			reduce_score(3)
+		"Cog":
+			increase_health(1)
+			
 func _on_area_3d_area_exited(area):
-	if area.get_parent().name == 'Ramp':
-		on_ramp = false
-		velocity.z += 2.5
+	var obstacle = area.get_parent().name
+	match obstacle:
+		'Ramp':
+			on_ramp = false
+			velocity.z += 2.5
+			increase_score(5)
+	
+
+# HEALTH
+func reduce_health(damage:int):
+	if health - damage >= 0:
+		health -= damage
+	else:
+		health = 0
+	set_health_label()
+	if health < 1:
+		initiate_game_over()
+
+func increase_health(increase:int):
+	if health + increase <= max_health:
+		health += increase
+	else:
+		health = max_health
+	set_health_label()
+
+func set_health_label():
+	health_label.text = "HP: %d/%d" % [health,max_health]
+	
+func initiate_game_over():
+	is_game_over = true
+	set_children_visibility(game_over, true)
+	set_children_visibility(game_ready, false)
+
+#SCORE
+func increase_score(increase: int):
+	score += increase
+	set_score_labels()
+
+func reduce_score(decrease:int):
+		if score - decrease >= 0:
+			score -= decrease
+		else:
+			score = 0
+		set_score_labels()
+	
+func set_score_labels():
+	score_label.text = "Score: %d" % score
+	final_score_label.text = "Final Score: %d" % score
