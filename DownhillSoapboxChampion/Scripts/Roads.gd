@@ -17,7 +17,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	gridmap = get_node("GridMap")
-	for z in range(1000):
+	for z in range(10000):
 		for x in range(5):
 			match x:
 				0: 
@@ -29,15 +29,18 @@ func _ready():
 				_: 
 					gridmap.set_cell_item(Vector3i(x, 0, z), RoadType.EMPTY)
 				
-			if x == 1 or x == 2 or x == 3:
+			if z > 5:
 				var obstacle_chance = rng.randi_range(1, 10)
 				var ramp_chance = rng.randi_range(1, 30)
-				# place random obstacle 10% of the time 
-				if obstacle_chance == 1:
-					place_obstacle(obstacles[randi_range(0, obstacles.size()-1)], x, z) 
+				if x == 1 or x == 2 or x == 3:
+					# place random obstacle 10% of the time 
+					if obstacle_chance == 1:
+						place_obstacle(obstacles[randi_range(0, obstacles.size()-1)], x, z)
+					elif ramp_chance == 1:
+						place_ramp(x, z)
 				else:
-					if ramp_chance == 1:
-						place_ramp(x, z) 
+					if obstacle_chance == 1:
+						place_obstacle(obstacles[0], x, z)
 					
 func place_obstacle(scene, x, z):
 	var new_scene = scene.instantiate() 

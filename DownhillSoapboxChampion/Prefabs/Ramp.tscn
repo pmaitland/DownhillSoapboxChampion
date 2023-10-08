@@ -18,22 +18,29 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_52j71"]
-size = Vector3(1.509, 9, 2)
+size = Vector3(1.3226, 3.82506, 0.375538)
 
 [node name="Ramp" type="Node3D"]
 
 [node name="Ramp" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255741, 0)
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255741, 0)
 mesh = SubResource("ArrayMesh_115ss")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.546058, -0.837747, 0, 0.837747, 0.546058, 0.0566431, 0.923781, 1.47416)
+shape = SubResource("BoxShape3D_52j71")
+
+[node name="Area3D" type="Area3D" parent="Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.546058, -0.837747, 0, 0.837747, 0.546058, 0.0406471, 0.916986, 1.47416)
 shape = SubResource("BoxShape3D_52j71")
 
 [node name="Haystack" parent="." instance=ExtResource("2_rdbkk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0.524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77673, 0, 0.524)
 
 [node name="Haystack2" parent="." instance=ExtResource("2_rdbkk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.352, 0, 0.524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07214, 0, 0.524)
