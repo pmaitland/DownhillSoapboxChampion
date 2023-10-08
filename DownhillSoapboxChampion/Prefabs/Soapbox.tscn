@@ -32,6 +32,104 @@ shape = SubResource("SphereShape3D_u6be6")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 8, 8)
 
+[node name="Game Over" type="Node3D" parent="CharacterBody3D/Camera3D"]
+
+[node name="Game Over" type="RichTextLabel" parent="CharacterBody3D/Camera3D/Game Over"]
+clip_contents = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.078
+anchor_right = 0.5
+anchor_bottom = 0.211
+offset_left = -287.0
+offset_top = -23.544
+offset_right = 287.0
+offset_bottom = 27.272
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 100
+text = "GAME OVER"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 6
+
+[node name="Press" type="RichTextLabel" parent="CharacterBody3D/Camera3D/Game Over"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.819
+anchor_right = 0.5
+anchor_bottom = 0.947
+offset_left = -273.0
+offset_top = 6.28796
+offset_right = 274.0
+offset_bottom = -7.65601
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Press [SPACE] to replay[center]"
+fit_content = true
+autowrap_mode = 0
+tab_size = 6
+
+[node name="Final_Score" type="RichTextLabel" parent="CharacterBody3D/Camera3D/Game Over"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -34.5
+offset_right = 143.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 50
+text = "Final score: "
+fit_content = true
+autowrap_mode = 0
+tab_size = 6
+
+[node name="Game Ready" type="Node3D" parent="CharacterBody3D/Camera3D"]
+
+[node name="Score" type="RichTextLabel" parent="CharacterBody3D/Camera3D/Game Ready"]
+anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.022
+anchor_right = 0.205
+anchor_bottom = 0.088
+offset_left = -0.368001
+offset_top = 0.743999
+offset_right = -130.16
+offset_bottom = -0.0240059
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 30
+text = "Score: 0"
+fit_content = true
+autowrap_mode = 0
+tab_size = 6
+
+[node name="Health" type="RichTextLabel" parent="CharacterBody3D/Camera3D/Game Ready"]
+anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.088
+anchor_right = 0.205
+anchor_bottom = 0.159
+offset_left = -0.368001
+offset_top = -0.0240059
+offset_right = -130.16
+offset_bottom = -4.03201
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 30
+text = "HP: 5/5"
+fit_content = true
+autowrap_mode = 0
+tab_size = 6
+
 [node name="Soapbox" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.05, 0, 0)
 mesh = ExtResource("2_63fb8")

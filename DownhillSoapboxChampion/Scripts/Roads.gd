@@ -10,6 +10,7 @@ enum RoadType {
 
 @export var obstacles: Array[PackedScene]
 var ramp_scene = load("res://Prefabs/Ramp.tscn")
+var pickup_scene = load("res://Prefabs/Cog.tscn")
 
 var gridmap : GridMap
 
@@ -32,12 +33,15 @@ func _ready():
 			if z > 5:
 				var obstacle_chance = rng.randi_range(1, 5)
 				var ramp_chance = rng.randi_range(1, 30)
+				var pickup_chance = rng.randi_range(1, 20)
 				if x == 1 or x == 2 or x == 3:
 					# place random obstacle 10% of the time 
 					if obstacle_chance == 1:
 						place_obstacle(obstacles[randi_range(0, obstacles.size()-1)], x, z)
 					elif ramp_chance == 1:
 						place_ramp(x, z)
+					elif pickup_chance == 1:
+						place_pickup(x, z)
 				else:
 					if obstacle_chance == 1:
 						place_obstacle(obstacles[0], x, z)
@@ -53,6 +57,14 @@ func place_obstacle(scene, x, z):
 	
 func place_ramp(x, z):
 	var new_ramp = ramp_scene.instantiate()
+	var new_position = gridmap.map_to_local(Vector3(x, 0, z))
+	new_position.x += rng.randf_range(-1, 1)
+	new_position.z += rng.randf_range(-1, 1)
+	new_ramp.position = new_position
+	add_child(new_ramp)
+
+func place_pickup(x, z):
+	var new_ramp = pickup_scene.instantiate()
 	var new_position = gridmap.map_to_local(Vector3(x, 0, z))
 	new_position.x += rng.randf_range(-1, 1)
 	new_position.z += rng.randf_range(-1, 1)
