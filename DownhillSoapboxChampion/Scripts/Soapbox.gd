@@ -37,6 +37,9 @@ var is_game_over = false
 
 var score = 0
 
+var can_reset = false
+signal game_over_signal
+
 func set_children_visibility(node_w_kids: Node3D, visible: bool):
 	for kid in node_w_kids.get_children():
 		kid.visible=visible
@@ -66,6 +69,15 @@ func _ready():
 	default_y_rotation = soapbox.rotation.y
 
 func _physics_process(delta):
+	if can_reset and Input.is_action_just_pressed("Space"):
+		can_reset = 0
+		position = Vector3(10, 1, 5)
+		reduce_score(99999)
+		increase_health(99999)
+		is_game_over = false
+		set_children_visibility(game_over, false)
+		set_children_visibility(game_ready, true)
+	
 	if on_ramp:
 		soapbox.rotation.x = on_ramp_rotation
 	else:
@@ -83,10 +95,10 @@ func _physics_process(delta):
 			colliding = false
 			colliding_duration = 0
 			soapbox.rotation.y = default_y_rotation
-			get_parent().get_node("CharacterBody3D/Audio/LandSound").play()
+			get_node("Audio/LandSound").play()
 	elif is_on_floor() and not on_ramp:
 		if in_air:
-			get_parent().get_node("CharacterBody3D/Audio/LandSound").play()
+			get_node("Audio/LandSound").play()
 			in_air = false
 		if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 			soapbox.rotation.y = default_y_rotation
@@ -123,15 +135,16 @@ func _on_area_3d_area_entered(area):
 	match obstacle:
 		'Ramp':
 			on_ramp = true
-			get_parent().get_node("CharacterBody3D/Audio/RampSound").play()
+			increase_score(5)
+			get_node("Audio/RampSound").play()
 		"Cone", "Haystack":
 			colliding = true
 			reduce_health(1)
 			reduce_score(3)
-			get_parent().get_node("CharacterBody3D/Audio/CrashSound").play()
+			get_node("Audio/CrashSound").play()
 		"Cog":
 			increase_health(1)
-			get_parent().get_node("CharacterBody3D/Audio/HealthSound").play()
+			get_node("Audio/HealthSound").play()
 			
 func _on_area_3d_area_exited(area):
 	var obstacle = area.get_parent().name
@@ -139,7 +152,6 @@ func _on_area_3d_area_exited(area):
 		'Ramp':
 			on_ramp = false
 			velocity.z += 2.5
-			increase_score(5)
 			in_air = true
 	
 
@@ -167,6 +179,8 @@ func initiate_game_over():
 	is_game_over = true
 	set_children_visibility(game_over, true)
 	set_children_visibility(game_ready, false)
+	can_reset = true
+	game_over_signal.emit()
 
 #SCORE
 func increase_score(increase: int):

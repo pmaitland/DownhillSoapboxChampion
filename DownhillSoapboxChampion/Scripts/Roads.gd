@@ -13,11 +13,27 @@ var ramp_scene = load("res://Prefabs/Ramp.tscn")
 var pickup_scene = load("res://Prefabs/Cog.tscn")
 
 var gridmap : GridMap
+var current_obstacles = []
 
 var rng = RandomNumberGenerator.new()
 
+var can_reset = false
+
 func _ready():
 	gridmap = get_node("GridMap")
+	reset_level()
+
+func _process(delta):
+	if can_reset and Input.is_action_just_pressed("Space"):
+		reset_level()
+
+func reset_level():
+	can_reset = false
+	
+	for obstacle in current_obstacles:
+		obstacle.queue_free()
+	current_obstacles = []
+	
 	for z in range(1000):
 		for x in range(5):
 			match x:
@@ -45,7 +61,7 @@ func _ready():
 				else:
 					if obstacle_chance == 1:
 						place_obstacle(obstacles[0], x, z)
-					
+
 func place_obstacle(scene, x, z):
 	var new_scene = scene.instantiate() 
 	var new_position = gridmap.map_to_local(Vector3(x, 0, z))
@@ -54,6 +70,7 @@ func place_obstacle(scene, x, z):
 	new_scene.position = new_position
 	new_scene.rotation.y = rng.randf_range(0, 2*PI)
 	add_child(new_scene)
+	current_obstacles.append(new_scene)
 	
 func place_ramp(x, z):
 	var new_ramp = ramp_scene.instantiate()
@@ -62,6 +79,7 @@ func place_ramp(x, z):
 	new_position.z += rng.randf_range(-1, 1)
 	new_ramp.position = new_position
 	add_child(new_ramp)
+	current_obstacles.append(new_ramp)
 
 func place_pickup(x, z):
 	var new_ramp = pickup_scene.instantiate()
@@ -70,3 +88,8 @@ func place_pickup(x, z):
 	new_position.z += rng.randf_range(-1, 1)
 	new_ramp.position = new_position
 	add_child(new_ramp)
+	current_obstacles.append(new_ramp)
+
+
+func _on_soapbox_game_over_signal():
+	can_reset = true
