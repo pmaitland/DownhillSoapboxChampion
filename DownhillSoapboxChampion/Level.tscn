@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://crd7sh4o40onj"]
+[gd_scene load_steps=7 format=3 uid="uid://crd7sh4o40onj"]
 
 [ext_resource type="PackedScene" uid="uid://brfxru1ervwnt" path="res://Prefabs/Soapbox.tscn" id="1_a7k53"]
 [ext_resource type="Script" path="res://Scripts/Roads.gd" id="2_g24tq"]
 [ext_resource type="MeshLibrary" uid="uid://ck1h7yd40p7s7" path="res://RoadsMeshLibrary.tres" id="3_fx1ln"]
 [ext_resource type="PackedScene" uid="uid://btegmv0qttjqj" path="res://Prefabs/Haystack.tscn" id="3_sq38d"]
 [ext_resource type="PackedScene" uid="uid://brnilnxovduty" path="res://Prefabs/Cone.tscn" id="4_40l3y"]
+[ext_resource type="AudioStream" uid="uid://bcgjobaql3mb" path="res://Audio/Music/DownhillSoapboxChampion.mp3" id="6_b2p8o"]
 
 [node name="Level" type="Node3D"]
 
@@ -18,3 +19,7 @@ obstacles = Array[PackedScene]([ExtResource("3_sq38d"), ExtResource("4_40l3y")])
 [node name="GridMap" type="GridMap" parent="Roads"]
 mesh_library = ExtResource("3_fx1ln")
 cell_size = Vector3(4, 1, 4)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_b2p8o")
+autoplay = true

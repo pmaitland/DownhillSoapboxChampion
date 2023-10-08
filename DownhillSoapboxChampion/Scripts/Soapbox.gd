@@ -16,6 +16,8 @@ var colliding_limit = 10
 var on_ramp = false;
 var on_ramp_rotation = 30 * PI/180
 
+var in_air = false
+
 var soapbox
 var camera
 var camera_initial_y
@@ -48,7 +50,11 @@ func _physics_process(delta):
 			colliding = false
 			colliding_duration = 0
 			soapbox.rotation.y = default_y_rotation
+			get_parent().get_node("CharacterBody3D/Audio/LandSound").play()
 	elif is_on_floor() and not on_ramp:
+		if in_air:
+			get_parent().get_node("CharacterBody3D/Audio/LandSound").play()
+			in_air = false
 		if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 			soapbox.rotation.y = default_y_rotation
 		elif Input.is_action_pressed("Left"):
@@ -80,10 +86,13 @@ func _physics_process(delta):
 func _on_area_3d_area_entered(area):
 	if area.get_parent().name == 'Ramp':
 		on_ramp = true
+		get_parent().get_node("CharacterBody3D/Audio/RampSound").play()
 	else:
 		colliding = true
+		get_parent().get_node("CharacterBody3D/Audio/CrashSound").play()
 
 func _on_area_3d_area_exited(area):
 	if area.get_parent().name == 'Ramp':
 		on_ramp = false
 		velocity.z += 2.5
+		in_air = true
