@@ -1,22 +1,29 @@
-[gd_scene load_steps=18 format=3 uid="uid://brfxru1ervwnt"]
+[gd_scene load_steps=21 format=3 uid="uid://brfxru1ervwnt"]
 
 [ext_resource type="Script" path="res://Scripts/Soapbox.gd" id="1_yn2y2"]
-[ext_resource type="ArrayMesh" uid="uid://dr3g87ipjxwb4" path="res://Models/soapbox.vox" id="2_63fb8"]
-[ext_resource type="Texture2D" uid="uid://dtvyudfuh7p6h" path="res://Sprites/Splash.png" id="2_mjpa7"]
-[ext_resource type="FontFile" uid="uid://ddi7ww4hgk0i1" path="res://font/Pixeboy-z8XGD.ttf" id="2_ryrj7"]
-[ext_resource type="AudioStream" uid="uid://cge6hcipjycc0" path="res://Audio/sounds/crash.mp3" id="3_2celo"]
-[ext_resource type="AudioStream" uid="uid://ci7fceyxrrk0f" path="res://Audio/sounds/ramp.mp3" id="4_ol7qi"]
-[ext_resource type="AudioStream" uid="uid://b4o0xqjwviylm" path="res://Audio/sounds/land.mp3" id="5_q17ug"]
-[ext_resource type="AudioStream" uid="uid://cihsnc22ug5lo" path="res://Audio/sounds/health.mp3" id="6_jj3br"]
+[ext_resource type="ArrayMesh" uid="uid://cbmf7s682gaky" path="res://Models/soapbox.vox" id="2_63fb8"]
+[ext_resource type="Texture2D" uid="uid://d0e7o0gqiwn17" path="res://Sprites/Splash.png" id="2_mjpa7"]
+[ext_resource type="FontFile" uid="uid://cep2xkisiggbb" path="res://font/Pixeboy-z8XGD.ttf" id="2_ryrj7"]
+[ext_resource type="AudioStream" uid="uid://1optknoeh5f5" path="res://Audio/sounds/crash.mp3" id="3_2celo"]
+[ext_resource type="AudioStream" uid="uid://dmhlg75jkkkyu" path="res://Audio/sounds/ramp.mp3" id="4_ol7qi"]
+[ext_resource type="Script" path="res://Scripts/Pulse.gd" id="4_qh2j8"]
+[ext_resource type="AudioStream" uid="uid://d1vctcyyjvjee" path="res://Audio/sounds/land.mp3" id="5_q17ug"]
+[ext_resource type="AudioStream" uid="uid://hqc7p62hlne3" path="res://Audio/sounds/health.mp3" id="6_jj3br"]
 [ext_resource type="Script" path="res://Scripts/Grass.gd" id="7_igef3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6be6"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_xo81i"]
+script = ExtResource("4_qh2j8")
 
 [sub_resource type="Gradient" id="Gradient_itkkp"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_nwxmc"]
 gradient = SubResource("Gradient_itkkp")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_n6t2g"]
+script = ExtResource("4_qh2j8")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e1vlf"]
 _surfaces = [{
@@ -60,18 +67,18 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 clip_contents = false
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.078
+anchor_top = 0.199
 anchor_right = 0.5
-anchor_bottom = 0.211
-offset_left = -287.0
-offset_top = -23.544
-offset_right = 287.0
-offset_bottom = 27.272
+anchor_bottom = 0.199
+offset_left = -196.0
+offset_top = -0.280014
+offset_right = 197.0
+offset_bottom = 57.72
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/normal_font = ExtResource("2_ryrj7")
-theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/normal_font_size = 150
 text = "GAME OVER"
 fit_content = true
 scroll_active = false
@@ -81,23 +88,24 @@ tab_size = 6
 [node name="Press" type="RichTextLabel" parent="Camera3D/Game Over"]
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.819
+anchor_top = 0.818
 anchor_right = 0.5
-anchor_bottom = 0.947
-offset_left = -273.0
-offset_top = 6.28796
-offset_right = 274.0
-offset_bottom = -7.65601
+anchor_bottom = 0.818
+offset_left = -268.5
+offset_top = 0.039978
+offset_right = 268.5
+offset_bottom = 29.04
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]Press [SPACE] to replay[center]"
+text = "[pulse][center]Press [SPACE] to play again[/center][/pulse]"
 fit_content = true
 autowrap_mode = 0
 tab_size = 6
+custom_effects = [SubResource("RichTextEffect_xo81i")]
 
 [node name="Final_Score" type="RichTextLabel" parent="Camera3D/Game Over"]
 anchors_preset = 8
@@ -105,16 +113,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -143.5
-offset_top = -34.5
-offset_right = 143.5
-offset_bottom = 34.5
+offset_top = -5.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 50
-text = "Final score: "
+text = "
+"
 fit_content = true
 autowrap_mode = 0
 tab_size = 6
@@ -124,13 +131,13 @@ tab_size = 6
 [node name="Score" type="RichTextLabel" parent="Camera3D/Game Ready"]
 anchors_preset = -1
 anchor_left = 0.009
-anchor_top = 0.022
-anchor_right = 0.205
-anchor_bottom = 0.088
-offset_left = -0.368001
-offset_top = 0.743999
-offset_right = -130.16
-offset_bottom = -0.0240059
+anchor_top = 0.017
+anchor_right = 0.009
+anchor_bottom = 0.017
+offset_left = 0.48
+offset_top = -0.240001
+offset_right = 0.48
+offset_bottom = 17.76
 size_flags_horizontal = 4
 theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 30
@@ -142,13 +149,13 @@ tab_size = 6
 [node name="Health" type="RichTextLabel" parent="Camera3D/Game Ready"]
 anchors_preset = -1
 anchor_left = 0.009
-anchor_top = 0.088
-anchor_right = 0.205
-anchor_bottom = 0.159
-offset_left = -0.368001
-offset_top = -0.0240059
-offset_right = -130.16
-offset_bottom = -4.03201
+anchor_top = 0.049
+anchor_right = 0.009
+anchor_bottom = 0.049
+offset_left = 0.48
+offset_top = -0.280006
+offset_right = 80.48
+offset_bottom = 17.72
 size_flags_horizontal = 4
 theme_override_fonts/normal_font = ExtResource("2_ryrj7")
 theme_override_font_sizes/normal_font_size = 30
@@ -166,62 +173,74 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_nwxmc")
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Camera3D/Game Start"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1366.0
-offset_top = -1024.0
-offset_right = 1366.0
-offset_bottom = 1024.0
+[node name="Splash" type="TextureRect" parent="Camera3D/Game Start/black"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.368
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_mjpa7")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="Game Over" type="RichTextLabel" parent="Camera3D/Game Start"]
+[node name="Title" type="RichTextLabel" parent="Camera3D/Game Start/black/Splash"]
 clip_contents = false
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 172.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.023
+anchor_right = 0.5
+anchor_bottom = 0.023
+offset_left = -361.0
+offset_top = 12.096
+offset_right = 361.0
+offset_bottom = 128.096
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_ryrj7")
-theme_override_font_sizes/normal_font_size = 150
+theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]DOWNHILL SOAPBOX
-CHAMPION[center]"
+CHAMPION[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 tab_size = 6
+metadata/_edit_use_anchors_ = true
 
-[node name="Press" type="RichTextLabel" parent="Camera3D/Game Start"]
+[node name="Press" type="RichTextLabel" parent="Camera3D/Game Start/black/Splash"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.819
+anchor_top = 0.818
 anchor_right = 0.5
-anchor_bottom = 0.947
-offset_left = -278.0
-offset_top = 6.28796
-offset_right = 279.0
-offset_bottom = -7.65601
+anchor_bottom = 0.818
+offset_left = -287.0
+offset_top = 0.039978
+offset_right = 307.0
+offset_bottom = 41.04
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("2_ryrj7")
-theme_override_font_sizes/normal_font_size = 150
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center]Press [SPACE] to play[center]"
+text = "[pulse][center]Press [SPACE] to play[/center][/pulse]"
 fit_content = true
 autowrap_mode = 0
 tab_size = 6
+custom_effects = [SubResource("RichTextEffect_n6t2g")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Soapbox" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.05, 0, 0)
